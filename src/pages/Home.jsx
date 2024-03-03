@@ -1,8 +1,10 @@
+// pages/Home.jsx
+
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Box, Container, Grid, Typography } from '@mui/material';
 
-import { getPokemonList } from '../services/api';
+import { getPokemonList, getPokemonDetail } from '../services/api';
 
 import CustomPagination from '../components/CustomPagination';
 import Search from '../components/Search';
@@ -17,7 +19,13 @@ const Home = () => {
 		const fetchPokemonList = async () => {
 			try {
 				const data = await getPokemonList();
-				setPokemonList(data);
+				const pokemonListWithImages = await Promise.all(
+					data.map(async (pokemon) => {
+						const imageUrl = await getPokemonDetail(pokemon.detailUrl);
+						return { ...pokemon, imageUrl };
+					})
+				);
+				setPokemonList(pokemonListWithImages);
 			} catch (error) {
 				console.error('Error fetching Pokemon list:', error);
 			}
@@ -39,7 +47,7 @@ const Home = () => {
 
 	const startIndex = (currentPage - 1) * itemsPerPage;
 	const endIndex = startIndex + itemsPerPage;
-	const currentPokemons = pokemonList.slice(startIndex, endIndex);
+	const currentPokemons = filteredPokemons.slice(startIndex, endIndex);
 
 	return (
 		<Box>
@@ -56,11 +64,12 @@ const Home = () => {
 							<Typography color='primary' variant='body2'>
 								{pokemon.name}
 							</Typography>
+							<img src={pokemon.imageUrl} alt={pokemon.name} />
 						</Grid>
 					))}
 				</Grid>
 				<CustomPagination
-					totalItems={pokemonList.length}
+					totalItems={filteredPokemons.length}
 					itemsPerPage={itemsPerPage}
 					currentPage={currentPage}
 					onPageChange={handlePageChange}

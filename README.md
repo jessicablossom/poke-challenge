@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Poke Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web app realizada con Reactjs, componentes de Material UI, Styled Components, utilizando la api : [PokeAPI](https://pokeapi.co/) a través de Axios
 
-## Available Scripts
+## Instalacion inicial:
 
-In the project directory, you can run:
+### Clonar el repositorio de github
 
-### `npm start`
+ ### `npm install` para instalar todas las dependencias
+- Material UI
+- Styled Components
+- Axios
+- React Router
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Correr el proyecto:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ ### `npm start`
 
-### `npm test`
+Corre la aplicacion en development mode.\
+Se abre en [http://localhost:3000](http://localhost:3000) en tu navegador preferido.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Endpoints
 
-### `npm run build`
+API de Pokemones: https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+API de Tipos de Pokemones: https://pokeapi.co/api/v2/type
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+API Detalle Pokemon: https://pokeapi.co/api/v2/type/1/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Detalle del proyecto
 
-### `npm run eject`
+El proyecto sigue una estructura organizada, con una vista principal y una página de error (404 Not Found). Se ha implementado React Router para manejar la navegación, lo que permite la expansión del proyecto con nuevas rutas de forma sencilla.
+Todas las llamadas a la API se realizan utilizando Axios y están centralizadas en el archivo services/api.js. Se han diseñado varias llamadas para manejar diferentes listas de Pokémon, según las necesidades del proyecto. Además, se implementa una paginación que muestra 8 elementos por página, facilitando la navegación del usuario.
+Se ha desarrollado un custom hook para gestionar la lógica de paginación de manera eficiente y reutilizable en todo el proyecto.
+La funcionalidad de búsqueda permite a los usuarios encontrar Pokémon por su nombre. Los elementos que coinciden con el término de búsqueda se muestran dinámicamente.
+Además, se han añadido filtros que permiten agrupar los Pokémon por su tipo. Esto proporciona una manera rápida y eficaz de explorar los Pokémon según su tipo.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Mejoras a futuro
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Tarjeta Detallada: Agregar una función para ver información adicional de cada Pokémon en una tarjeta detallada, ya sea en un modal o en una nueva ruta.
+- Ordenamiento A-Z: Permitir a los usuarios ordenar la lista de Pokémon alfabéticamente por nombre para facilitar la búsqueda.
+- Favoritos: Implementar la opción de marcar Pokémon como favoritos para acceder fácilmente a una lista personalizada.

@@ -1,6 +1,11 @@
 # Poke Challenge
 
+
 Web app realizada con Reactjs, componentes de Material UI, Styled Components, utilizando la api : [PokeAPI](https://pokeapi.co/) a través de Axios
+
+![Screenshot 2024-03-04 at 03 31 33](https://github.com/jessicablossom/poke-challenge/assets/11197367/73a0fbb3-b3c7-4d8d-a666-d1d37e094f16)
+
+![Screenshot 2024-03-04 at 03 32 31](https://github.com/jessicablossom/poke-challenge/assets/11197367/01eaea84-fde1-42ae-af3d-265e050c00e7)
 
 ## Instalacion inicial:
 

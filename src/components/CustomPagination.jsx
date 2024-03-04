@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Pagination } from '@mui/material';
+// import { getPokemonPage } from '../services/api';
 import styled from 'styled-components';
 
 const StyledPagination = styled(Pagination)`
@@ -12,36 +13,19 @@ const StyledPagination = styled(Pagination)`
 	}
 
 	.Mui-selected {
-		color: #6B46BF;
+		color: #6b46bf;
 		font-weight: bold;
+	}
 `;
 
-const CustomPagination = ({ totalItems, itemsPerPage, currentPage, onPageChange }) => {
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+const CustomPagination = ({ currentPage, totalItems, itemsPerPage, onPageChange }) => {
+	const [totalPages, setTotalPages] = useState(0);
 	useEffect(() => {
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth);
-		};
-		window.addEventListener('resize', handleResize);
-
-		return () => {
-			window.removeEventListener('resize', handleResize);
-		};
-	}, []);
-
-	const handlePageChange = (event, page) => {
-		onPageChange(page);
-	};
+		setTotalPages(Math.ceil(totalItems / itemsPerPage));
+	}, [totalItems, itemsPerPage]);
 
 	return (
-		<StyledPagination
-			count={Math.ceil(totalItems / itemsPerPage)}
-			page={currentPage}
-			onChange={handlePageChange}
-			color='primary'
-			size={windowWidth <= 1024 ? 'medium' : 'large'}
-		/>
+		<StyledPagination count={totalPages} page={currentPage} onChange={onPageChange} color='primary' size='large' />
 	);
 };
 

@@ -1,5 +1,3 @@
-// NotFound.jsx
-
 import React from 'react';
 import { Typography, Container, Box } from '@mui/material';
 
@@ -11,7 +9,11 @@ const NotFound = () => {
 					404 La página que buscabas no existe
 				</Typography>
 				<Box>
-					<img src='/pikachu.png' alt='Pikachu' style={{ width: '100px' }} />
+					<img
+						src='/poke-empty.png'
+						alt='empty-state'
+						style={{ width: '200px', filter: 'drop-shadow(16px 16px 16px rgba(17, 28, 55, 1))' }}
+					/>
 				</Box>
 			</Box>
 		</Container>

@@ -1,6 +1,63 @@
 import React, { useState } from 'react';
 import { IconButton, TextField, Box } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import styled from 'styled-components';
+
+const SearchContainer = styled(Box)`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 60px;
+	gap: 10px;
+`;
+
+const StyledTextField = styled(TextField)`
+	&& {
+		& .MuiInputBase-root {
+			border: none;
+		}
+
+		& .MuiOutlinedInput-root {
+			color:'white';
+			border: 1px solid rgba(47, 47, 69, 1);
+			background-color: rgba(255, 255, 255, 0.12);
+			height: 60px;
+			border-radius: 10px;
+			&::placeholder {
+				color: white;
+			}
+	
+	& .MuiInputBase-input-MuiOutlinedInput-input {
+		color: white;
+	  }
+	}
+`;
+
+const SearchButton = styled(Box)`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	width: 60px;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.12);
+	border: 1px solid rgba(47, 47, 69, 1);
+	cursor: pointer;
+	border-radius: 10px;
+	&:hover {
+		background-color: white;
+		& svg {
+			color: rgba(47, 47, 69, 1);
+		}
+	}
+`;
+
+const StyledSearchIcon = styled(SearchIcon)`
+	&& {
+		transition: ease-in-out color 0.4s;
+	}
+`;
 
 const Search = ({ onSearch }) => {
 	const [searchTerm, setSearchTerm] = useState('');
@@ -14,36 +71,18 @@ const Search = ({ onSearch }) => {
 	};
 
 	return (
-		<Box display='flex' alignItems='center' justifyContent='space-between' width='100%' height={60} gap={1}>
-			<TextField
+		<SearchContainer>
+			<StyledTextField
 				placeholder='Quick Search..'
 				value={searchTerm}
 				onChange={handleSearchChange}
 				fullWidth
-				sx={{
-					'& .MuiInputBase-root': {
-						border: 'none',
-					},
-				}}
+				color='primary'
 			/>
-			<IconButton
-				variant='square'
-				onClick={handleSearchSubmit}
-				sx={{
-					color: 'white',
-					width: 60,
-					height: '100%',
-					backgroundColor: 'rgba(255, 255, 255, 0.12)',
-					cursor: 'pointer',
-					borderRadius: 18,
-					'&:hover': {
-						backgroundColor: 'white',
-					},
-				}}
-			>
-				<SearchIcon color='secondary' />
-			</IconButton>
-		</Box>
+			<SearchButton onClick={handleSearchSubmit}>
+				<StyledSearchIcon color='primary' />
+			</SearchButton>
+		</SearchContainer>
 	);
 };
 
